@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+
+/* Fuentes autoalojadas: nada se carga de internet. Solo el subconjunto latino (cubre español). */
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/inter/latin-800.css';
+@import '@fontsource/playfair-display/latin-600.css';
+@import '@fontsource/playfair-display/latin-700.css';
+@import '@fontsource/fredoka/latin-400.css';
+@import '@fontsource/fredoka/latin-600.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '@fontsource/jetbrains-mono/latin-700.css';
+
+@theme {
+  --color-marino: #001f34;
+  --color-marino-2: #082b45;
+  --color-marino-3: #103d5e;
+  --color-amarillo: #fec400;
+  --color-naranja: #fe9100;
+  --color-llama: #fe5208;
+  --color-gris: #979797;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-marino);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Degradado de la flama del logo */
+.flama {
+  background: linear-gradient(135deg, #fec400 0%, #fe9100 50%, #fe5208 100%);
+}
+.texto-flama {
+  background: linear-gradient(90deg, #fec400, #fe9100, #fe5208);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Línea de código que cambió: resaltado amarillo que se desvanece */
+@keyframes destello {
+  0% {
+    background: rgba(254, 196, 0, 0.9);
+    color: #001f34;
+  }
+  100% {
+    background: rgba(254, 196, 0, 0);
+  }
+}
+@keyframes tinta {
+  0%,
+  45% {
+    color: #001f34;
+  }
+}
+.linea-nueva {
+  animation: destello 2s ease-out;
+}
+.linea-nueva .tok {
+  animation: tinta 2s ease-out;
+}
+
+/* Cuadro de código */
+.codigo {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Barras de desplazamiento discretas */
+.scroll-fino {
+  scrollbar-width: thin;
+  scrollbar-color: #103d5e transparent;
+}
+
+/* La página de los alumnos (dentro del marco de celular y en el visor) */
+.pagina {
+  min-height: 100%;
+}
+.pagina a {
+  cursor: default;
+}
+
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+:focus-visible {
+  outline: 3px solid var(--color-amarillo);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
